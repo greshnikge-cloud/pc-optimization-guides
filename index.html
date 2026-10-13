@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Оптимизация ПК под игры 2026 | +FPS -Фризы -Input Lag</title>
+  <meta name="description" content="Готовые гайды по оптимизации Windows, NVIDIA/AMD под CS2, Valorant, Dota 2 и другие игры. Максимум FPS, минимум фризов и input lag.">
+  <meta name="theme-color" content="#0b0f19">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #070b14;
+      --bg-card: #0f1624;
+      --bg-card-hover: #151e30;
+      --border: #1c2740;
+      --text: #eef2ff;
+      --text-muted: #8b9bb8;
+      --accent: #818cf8;
+      --accent-2: #22d3ee;
+      --accent-3: #c084fc;
+      --success: #34d399;
+      --warning: #fbbf24;
+      --gradient: linear-gradient(135deg, #818cf8 0%, #22d3ee 50%, #c084fc 100%);
+      --radius: 18px;
+      --shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .bg-glow {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+    }
+    .bg-glow::before {
+      content: ''; position: absolute; top: -25%; left: -15%; width: 55%; height: 55%;
+      background: radial-gradient(circle, rgba(129, 140, 248, 0.18) 0%, transparent 70%);
+      animation: float 22s ease-in-out infinite;
+    }
+    .bg-glow::after {
+      content: ''; position: absolute; bottom: -25%; right: -15%; width: 50%; height: 50%;
+      background: radial-gradient(circle, rgba(34, 211, 238, 0.14) 0%, transparent 70%);
+      animation: float 28s ease-in-out infinite reverse;
+    }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(40px, -35px) scale(1.05); }
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
+    header { padding: 56px 0 32px; text-align: center; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(129, 140, 248, 0.12); border: 1px solid rgba(129, 140, 248, 0.28);
+      color: var(--accent-2); font-size: 13px; font-weight: 600;
+      padding: 7px 16px; border-radius: 100px; margin-bottom: 20px;
+    }
+    h1 {
+      font-size: clamp(28px, 5vw, 42px); font-weight: 800; line-height: 1.15; margin-bottom: 14px;
+      background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .subtitle { font-size: 16.5px; color: var(--text-muted); max-width: 520px; margin: 0 auto 26px; }
+    .header-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 28px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; font-family: inherit; font-size: 14px; font-weight: 600;
+      padding: 12px 22px; border-radius: 12px; border: none; cursor: pointer; transition: all 0.2s ease; text-decoration: none;
+    }
+    .btn-primary { background: var(--gradient); color: #0b0f19; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(129, 140, 248, 0.35); }
+    .btn-secondary { background: var(--bg-card); color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { background: var(--bg-card-hover); border-color: var(--accent); }
+    nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+    nav a {
+      color: var(--text-muted); text-decoration: none; font-size: 13.5px; font-weight: 500;
+      padding: 8px 15px; border-radius: 100px; border: 1px solid var(--border); background: var(--bg-card); transition: all 0.2s ease;
+    }
+    nav a:hover { color: var(--text); border-color: var(--accent); background: var(--bg-card-hover); }
+    section { margin-bottom: 52px; }
+    .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+    .section-number {
+      width: 36px; height: 36px; border-radius: 11px; background: var(--gradient);
+      display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: #0b0f19; flex-shrink: 0;
+    }
+    .section-title { font-size: 20px; font-weight: 700; }
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 20px 22px; margin-bottom: 12px; transition: all 0.25s ease;
+    }
+    .card:hover { background: var(--bg-card-hover); border-color: rgba(129, 140, 248, 0.4); transform: translateY(-2px); box-shadow: var(--shadow); }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+    .step {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 22px 16px; text-align: center; transition: all 0.25s ease;
+    }
+    .step:hover { border-color: rgba(129, 140, 248, 0.5); transform: translateY(-4px); box-shadow: var(--shadow); }
+    .step-icon {
+      width: 48px; height: 48px; border-radius: 14px; background: var(--gradient);
+      display: flex; align-items: center; justify-content: center; font-size: 22px; margin: 0 auto 12px;
+    }
+    .step h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+    .step p { font-size: 13px; color: var(--text-muted); }
+    .list { list-style: none; display: grid; gap: 10px; }
+    .list li {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
+      padding: 16px 18px; display: flex; gap: 14px; align-items: flex-start;
+    }
+    .list li:hover { border-color: rgba(129, 140, 248, 0.4); background: var(--bg-card-hover); }
+    .num {
+      width: 28px; height: 28px; border-radius: 8px; background: rgba(129, 140, 248, 0.18);
+      color: var(--accent-2); display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 13px; flex-shrink: 0;
+    }
+    .list strong { display: block; margin-bottom: 3px; font-size: 15px; }
+    .list p { color: var(--text-muted); font-size: 13.5px; }
+    .code-block {
+      background: #0a0f1a; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin: 12px 0;
+    }
+    .code-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 14px; background: rgba(129, 140, 248, 0.08); border-bottom: 1px solid var(--border);
+    }
+    .code-title { font-size: 12.5px; font-weight: 600; color: var(--accent-2); }
+    .copy-btn {
+      background: rgba(129, 140, 248, 0.18); border: 1px solid rgba(129, 140, 248, 0.3);
+      color: var(--text); font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 7px;
+      cursor: pointer; transition: all 0.2s; font-family: inherit;
+    }
+    .copy-btn:hover { background: rgba(129, 140, 248, 0.32); }
+    .copy-btn.copied { background: rgba(52, 211, 153, 0.18); border-color: rgba(52, 211, 153, 0.4); color: var(--success); }
+    pre {
+      padding: 14px 16px; font-family: 'JetBrains Mono', monospace; font-size: 12.5px;
+      line-height: 1.55; color: #c5d0e6; overflow-x: auto; white-space: pre-wrap; word-break: break-word;
+    }
+    footer {
+      text-align: center; padding: 36px 0 48px; color: var(--text-muted); font-size: 13px;
+      border-top: 1px solid var(--border);
+    }
+    .toast {
+      position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(80px);
+      background: var(--bg-card); border: 1px solid var(--border); color: var(--text);
+      padding: 12px 22px; border-radius: 12px; font-size: 14px; font-weight: 500;
+      box-shadow: var(--shadow); z-index: 100; opacity: 0; transition: all 0.3s ease; pointer-events: none;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+    @media (max-width: 640px) {
+      header { padding: 36px 0 24px; }
+      .section-title { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-glow"></div>
+  <div class="container">
+    <header>
+      <div class="badge">🚀 Автовыдача · Октябрь 2026</div>
+      <h1>Оптимизация ПК<br>под игры 2026</h1>
+      <p class="subtitle">Готовые пошаговые гайды: +FPS, меньше фризов и input lag для CS2, Valorant, Dota 2 и других игр</p>
+      <div class="header-actions">
+        <a class="btn btn-primary" href="#guide">📖 Открыть гайд</a>
+        <a class="btn btn-secondary" href="#nvidia">⚡ Настройки NVIDIA</a>
+      </div>
+      <nav>
+        <a href="#guide">Основной гайд</a>
+        <a href="#nvidia">NVIDIA / AMD</a>
+        <a href="#cs2">CS2</a>
+        <a href="#tips">Советы</a>
+      </nav>
+    </header>
+
+    <section id="guide">
+      <div class="section-header">
+        <div class="section-number">1</div>
+        <h2 class="section-title">Основной гайд по оптимизации Windows</h2>
+      </div>
+      <ul class="list">
+        <li>
+          <div class="num">1</div>
+          <div>
+            <strong>Схема электропитания</strong>
+            <p>Панель управления → Электропитание → Высокая производительность. Или создай свою схему и поставь минимум 100% на процессор.</p>
+          </div>
+        </li>
+        <li>
+          <div class="num">2</div>
+          <div>
+            <strong>Визуальные эффекты</strong>
+            <p>Этот компьютер → Свойства → Дополнительные параметры системы → Быстродействие → Параметры → Обеспечить наилучшее быстродействие.</p>
+          </div>
+        </li>
+        <li>
+          <div class="num">3</div>
+          <div>
+            <strong>Автозагрузка</strong>
+            <p>Диспетчер задач → Автозагрузка. Отключи всё ненужное (Discord, Steam, браузеры можно оставить).</p>
+          </div>
+        </li>
+        <li>
+          <div class="num">4</div>
+          <div>
+            <strong>Службы Windows</strong>
+            <p>Win + R → services.msc. Отключи: SysMain, Windows Search, Fax, Remote Registry (если не пользуешься).</p>
+          </div>
+        </li>
+        <li>
+          <div class="num">5</div>
+          <div>
+            <strong>Файл подкачки</strong>
+            <p>Дополнительные параметры системы → Быстродействие → Параметры → Дополнительно → Виртуальная память. Поставь фиксированный размер (1.5–2× ОЗУ).</p>
+          </div>
+        </li>
+        <li>
+          <div class="num">6</div>
+          <div>
+            <strong>Игровой режим и Game Bar</strong>
+            <p>Параметры → Игры. Включи «Игровой режим», отключи Game Bar и записи, если не нужны.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="nvidia">
+      <div class="section-header">
+        <div class="section-number">2</div>
+        <h2 class="section-title">Настройки NVIDIA / AMD</h2>
+      </div>
+      <div class="card">
+        <strong style="color: var(--accent-2);">NVIDIA Control Panel → Управление параметрами 3D</strong>
+        <div class="code-block" style="margin-top:12px">
+          <div class="code-header">
+            <span class="code-title">Рекомендуемые значения</span>
+            <button class="copy-btn" onclick="copyText(this)">Копировать</button>
+          </div>
+          <pre>Режим управления электропитанием → Предпочтителен режим максимальной производительности
+Вертикальный синхроимпульс → Выкл
+Тройная буферизация → Выкл
+Максимальное количество заранее подготовленных кадров → 1
+Фильтрация текстур — Качество → Высокая производительность
+Анизотропная фильтрация → Выкл (или управляется приложением)
+Сглаживание — Режим → Управляется приложением
+CUDA — Графические процессоры → Все</pre>
+        </div>
+      </div>
+      <div class="card">
+        <strong style="color: var(--accent-2);">AMD Software</strong>
+        <p style="margin-top:8px;color:var(--text-muted);font-size:14px">
+          Gaming → Graphics → Radeon Anti-Lag = Enabled<br>
+          Radeon Chill = Off<br>
+          Radeon Boost = Off (или On для слабых ПК)<br>
+          Texture Filtering Quality = Performance
+        </p>
+      </div>
+    </section>
+
+    <section id="cs2">
+      <div class="section-header">
+        <div class="section-number">3</div>
+        <h2 class="section-title">Дополнительно для CS2</h2>
+      </div>
+      <div class="card">
+        <p style="color:var(--text-muted);font-size:14.5px;margin-bottom:12px">Запусти CS2 с параметрами запуска:</p>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-title">Параметры запуска Steam</span>
+            <button class="copy-btn" onclick="copyText(this)">Копировать</button>
+          </div>
+          <pre>-novid -high -threads 8 +fps_max 0 -nojoy</pre>
+        </div>
+        <p style="color:var(--text-muted);font-size:13.5px;margin-top:10px">
+          В игре: выключи VSync, поставь Multisampling Anti-Aliasing = None или 2x, Shader Detail = Low/Medium, Effect Detail = Low.
+        </p>
+      </div>
+    </section>
+
+    <section id="tips">
+      <div class="section-header">
+        <div class="section-number">4</div>
+        <h2 class="section-title">Быстрые советы</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-icon">🧹</div>
+          <h3>Очистка</h3>
+          <p>Temp-файлы, %temp%, Disk Cleanup, CCleaner (осторожно с реестром)</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">📡</div>
+          <h3>Сеть</h3>
+          <p>Ethernet лучше Wi-Fi. Отключи фоновые обновления Windows во время игры</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">🖥️</div>
+          <h3>Драйверы</h3>
+          <p>Всегда свежие драйверы GPU + чистая установка через DDU при смене</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">⚡</div>
+          <h3>Фон</h3>
+          <p>Закрой браузер, Discord overlay, NVIDIA Broadcast если не нужны</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Оптимизация ПК под игры · 2026</p>
+      <p style="margin-top:6px;opacity:0.7">Сайт создан для автовыдачи на FunPay</p>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast">Скопировано!</div>
+
+  <script>
+    function copyText(btn) {
+      const pre = btn.closest('.code-block').querySelector('pre');
+      navigator.clipboard.writeText(pre.innerText).then(() => {
+        btn.classList.add('copied');
+        btn.textContent = 'Скопировано';
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          btn.textContent = 'Копировать';
+          toast.classList.remove('show');
+        }, 1800);
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,2 +1,7 @@
-# pc-optimization-guides
-Оптимизация ПК под игры 2026 — CS2, Valorant, Dota 2 и другие. Гайды +FPS / -фризы / -input lag
+# PC Optimization Guides 2026
+
+Готовые гайды по оптимизации ПК под игры (CS2, Valorant, Dota 2 и др.).
+
+**Сайт:** https://greshnikge-cloud.github.io/pc-optimization-guides/
+
+Используется для автовыдачи на FunPay.
