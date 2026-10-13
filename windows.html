@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ускорение Windows 10/11 2026 | Очистка + производительность</title>
+  <meta name="description" content="Готовый гайд по ускорению Windows 10/11: очистка, отключение служб, автозагрузка, файл подкачки, приватность.">
+  <meta name="theme-color" content="#0b0f19">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#070b14;--bg-card:#0f1624;--bg-card-hover:#151e30;--border:#1c2740;--text:#eef2ff;--text-muted:#8b9bb8;--accent:#818cf8;--accent-2:#22d3ee;--success:#34d399;--gradient:linear-gradient(135deg,#818cf8 0%,#22d3ee 50%,#c084fc 100%);--radius:18px;--shadow:0 12px 40px rgba(0,0,0,.45)}
+    *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;min-height:100vh;overflow-x:hidden}
+    .bg-glow{position:fixed;inset:0;pointer-events:none;z-index:0}.bg-glow::before{content:'';position:absolute;top:-25%;left:-15%;width:55%;height:55%;background:radial-gradient(circle,rgba(129,140,248,.18) 0%,transparent 70%);animation:float 22s ease-in-out infinite}.bg-glow::after{content:'';position:absolute;bottom:-25%;right:-15%;width:50%;height:50%;background:radial-gradient(circle,rgba(34,211,238,.14) 0%,transparent 70%);animation:float 28s ease-in-out infinite reverse}@keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-35px)}}
+    .container{max-width:960px;margin:0 auto;padding:0 20px;position:relative;z-index:1}header{padding:56px 0 32px;text-align:center}
+    .badge{display:inline-flex;gap:8px;background:rgba(129,140,248,.12);border:1px solid rgba(129,140,248,.28);color:var(--accent-2);font-size:13px;font-weight:600;padding:7px 16px;border-radius:100px;margin-bottom:20px}
+    h1{font-size:clamp(28px,5vw,42px);font-weight:800;line-height:1.15;margin-bottom:14px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .subtitle{font-size:16.5px;color:var(--text-muted);max-width:540px;margin:0 auto 26px}
+    nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:8px}nav a{color:var(--text-muted);text-decoration:none;font-size:13.5px;font-weight:500;padding:8px 15px;border-radius:100px;border:1px solid var(--border);background:var(--bg-card)}nav a:hover{color:var(--text);border-color:var(--accent);background:var(--bg-card-hover)}
+    section{margin-bottom:52px}.section-header{display:flex;align-items:center;gap:14px;margin-bottom:20px}.section-number{width:36px;height:36px;border-radius:11px;background:var(--gradient);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#0b0f19}.section-title{font-size:20px;font-weight:700}
+    .card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;margin-bottom:12px}
+    .list{list-style:none;display:grid;gap:10px}.list li{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:16px 18px;display:flex;gap:14px;align-items:flex-start}
+    .num{width:28px;height:28px;border-radius:8px;background:rgba(129,140,248,.18);color:var(--accent-2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+    .list strong{display:block;margin-bottom:3px;font-size:15px}.list p{color:var(--text-muted);font-size:13.5px}
+    .code-block{background:#0a0f1a;border:1px solid var(--border);border-radius:14px;overflow:hidden;margin:12px 0}.code-header{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:rgba(129,140,248,.08);border-bottom:1px solid var(--border)}.code-title{font-size:12.5px;font-weight:600;color:var(--accent-2)}
+    .copy-btn{background:rgba(129,140,248,.18);border:1px solid rgba(129,140,248,.3);color:var(--text);font-size:12px;padding:4px 12px;border-radius:7px;cursor:pointer;font-family:inherit}.copy-btn:hover{background:rgba(129,140,248,.32)}.copy-btn.copied{background:rgba(52,211,153,.18);color:var(--success)}
+    pre{padding:14px 16px;font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.55;color:#c5d0e6;white-space:pre-wrap;word-break:break-word}
+    footer{text-align:center;padding:36px 0 48px;color:var(--text-muted);font-size:13px;border-top:1px solid var(--border)}footer a{color:var(--accent-2);text-decoration:none}
+    .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--bg-card);border:1px solid var(--border);padding:12px 22px;border-radius:12px;font-size:14px;z-index:100;opacity:0;transition:all .3s;pointer-events:none}.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+  </style>
+</head>
+<body>
+  <div class="bg-glow"></div>
+  <div class="container">
+    <header>
+      <div class="badge">⚡ Windows 10/11 · 2026</div>
+      <h1>Ускорение Windows<br>Очистка + производительность</h1>
+      <p class="subtitle">Пошаговый гайд: система станет быстрее, меньше фоновых процессов и тормозов</p>
+      <nav>
+        <a href="#clean">Очистка</a>
+        <a href="#startup">Автозагрузка</a>
+        <a href="#services">Службы</a>
+        <a href="#power">Питание</a>
+        <a href="#privacy">Приватность</a>
+      </nav>
+    </header>
+
+    <section id="clean">
+      <div class="section-header"><div class="section-number">1</div><h2 class="section-title">Очистка системы</h2></div>
+      <ul class="list">
+        <li><div class="num">1</div><div><strong>Временные файлы</strong><p>Win + R → %temp% → удали всё. Потом temp и Prefetch.</p></div></li>
+        <li><div class="num">2</div><div><strong>Очистка диска</strong><p>Этот компьютер → ПКМ по диску C → Свойства → Очистка диска → Очистить системные файлы.</p></div></li>
+        <li><div class="num">3</div><div><strong>Хранилище</strong><p>Параметры → Система → Память устройства → Временные файлы + Корзина.</p></div></li>
+      </ul>
+    </section>
+
+    <section id="startup">
+      <div class="section-header"><div class="section-number">2</div><h2 class="section-title">Автозагрузка</h2></div>
+      <div class="card">
+        <p style="color:var(--text-muted);font-size:14.5px">Диспетчер задач → Автозагрузка. Отключи всё, кроме антивируса, драйверов и действительно нужных программ (Discord/Steam можно оставить).</p>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="section-header"><div class="section-number">3</div><h2 class="section-title">Службы (осторожно)</h2></div>
+      <div class="card">
+        <div class="code-block">
+          <div class="code-header"><span class="code-title">Можно отключить (если не пользуешься)</span><button class="copy-btn" onclick="copyText(this)">Копировать</button></div>
+          <pre>SysMain (Superfetch)
+Windows Search
+Fax
+Remote Registry
+Xbox Services (если не играешь в Xbox)
+Connected User Experiences and Telemetry</pre>
+        </div>
+        <p style="margin-top:10px;color:var(--text-muted);font-size:13.5px">Win + R → services.msc → найди службу → Свойства → Тип запуска: Отключена.</p>
+      </div>
+    </section>
+
+    <section id="power">
+      <div class="section-header"><div class="section-number">4</div><h2 class="section-title">Питание и быстродействие</h2></div>
+      <ul class="list">
+        <li><div class="num">1</div><div><strong>Схема электропитания</strong><p>Высокая производительность. Минимум процессора = 100%.</p></div></li>
+        <li><div class="num">2</div><div><strong>Визуальные эффекты</strong><p>Этот компьютер → Свойства → Доп. параметры → Быстродействие → Обеспечить наилучшее быстродействие.</p></div></li>
+        <li><div class="num">3</div><div><strong>Файл подкачки</strong><p>Фиксированный размер ≈ 1.5–2× объёма ОЗУ.</p></div></li>
+      </ul>
+    </section>
+
+    <section id="privacy">
+      <div class="section-header"><div class="section-number">5</div><h2 class="section-title">Приватность и телеметрия</h2></div>
+      <div class="card">
+        <p style="color:var(--text-muted);font-size:14.5px">Параметры → Конфиденциальность: отключи рекламный ID, диагностику «Полные», фоновые приложения, которые не нужны. Можно использовать O&O ShutUp10++ (бесплатно) для быстрой настройки.</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>Ускорение Windows · 2026</p>
+      <p style="margin-top:8px">Продавец: <a href="https://funpay.com/users/21725906/" target="_blank">funpay.com/users/21725906</a></p>
+      <p style="margin-top:10px"><a href="index.html">← Все гайды</a></p>
+    </footer>
+  </div>
+  <div class="toast" id="toast">Скопировано!</div>
+  <script>function copyText(btn){const pre=btn.closest('.code-block').querySelector('pre');navigator.clipboard.writeText(pre.innerText).then(()=>{btn.classList.add('copied');btn.textContent='Скопировано';const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>{btn.classList.remove('copied');btn.textContent='Копировать';t.classList.remove('show')},1800)})}</script>
+</body>
+</html>

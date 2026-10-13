@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шаблоны сообщений для продавцов FunPay / Discord 2026</title>
+  <meta name="description" content="Готовые шаблоны сообщений продавца: приветствие, выдача, просьба отзыва, задержка, возврат, негатив.">
+  <meta name="theme-color" content="#0b0f19">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#070b14;--bg-card:#0f1624;--border:#1c2740;--text:#eef2ff;--text-muted:#8b9bb8;--accent:#818cf8;--accent-2:#22d3ee;--success:#34d399;--gradient:linear-gradient(135deg,#818cf8 0%,#22d3ee 50%,#c084fc 100%);--radius:18px}
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;min-height:100vh}
+    .bg-glow{position:fixed;inset:0;pointer-events:none;z-index:0}.bg-glow::before{content:'';position:absolute;top:-25%;left:-15%;width:55%;height:55%;background:radial-gradient(circle,rgba(129,140,248,.18) 0%,transparent 70%)}
+    .container{max-width:960px;margin:0 auto;padding:0 20px;position:relative;z-index:1}header{padding:56px 0 32px;text-align:center}
+    .badge{display:inline-flex;gap:8px;background:rgba(129,140,248,.12);border:1px solid rgba(129,140,248,.28);color:var(--accent-2);font-size:13px;font-weight:600;padding:7px 16px;border-radius:100px;margin-bottom:20px}
+    h1{font-size:clamp(28px,5vw,42px);font-weight:800;margin-bottom:14px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .subtitle{font-size:16.5px;color:var(--text-muted);max-width:540px;margin:0 auto 26px}
+    nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}nav a{color:var(--text-muted);text-decoration:none;font-size:13.5px;padding:8px 15px;border-radius:100px;border:1px solid var(--border);background:var(--bg-card)}nav a:hover{color:var(--text);border-color:var(--accent)}
+    section{margin-bottom:48px}.section-header{display:flex;align-items:center;gap:14px;margin-bottom:18px}.section-number{width:36px;height:36px;border-radius:11px;background:var(--gradient);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#0b0f19}.section-title{font-size:19px;font-weight:700}
+    .card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;margin-bottom:12px}
+    .code-block{background:#0a0f1a;border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-top:10px}.code-header{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:rgba(129,140,248,.08);border-bottom:1px solid var(--border)}.code-title{font-size:12.5px;font-weight:600;color:var(--accent-2)}
+    .copy-btn{background:rgba(129,140,248,.18);border:1px solid rgba(129,140,248,.3);color:var(--text);font-size:12px;padding:4px 12px;border-radius:7px;cursor:pointer;font-family:inherit}.copy-btn.copied{color:var(--success)}
+    pre{padding:14px 16px;font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.55;color:#c5d0e6;white-space:pre-wrap}
+    footer{text-align:center;padding:36px 0 48px;color:var(--text-muted);font-size:13px;border-top:1px solid var(--border)}footer a{color:var(--accent-2);text-decoration:none}
+    .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--bg-card);border:1px solid var(--border);padding:12px 22px;border-radius:12px;opacity:0;transition:all .3s;pointer-events:none}.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+  </style>
+</head>
+<body>
+  <div class="bg-glow"></div>
+  <div class="container">
+    <header>
+      <div class="badge">💬 Шаблоны продавца · 2026</div>
+      <h1>Сообщения для продавцов<br>FunPay + Discord</h1>
+      <p class="subtitle">Готовые тексты: приветствие, выдача, отзыв, задержка, возврат, негатив</p>
+      <nav>
+        <a href="#hello">Приветствие</a>
+        <a href="#delivery">Выдача</a>
+        <a href="#review">Отзыв</a>
+        <a href="#delay">Задержка</a>
+        <a href="#refund">Возврат</a>
+        <a href="#negative">Негатив</a>
+      </nav>
+    </header>
+
+    <section id="hello">
+      <div class="section-header"><div class="section-number">1</div><h2 class="section-title">Приветствие покупателя</h2></div>
+      <div class="card">
+        <div class="code-block"><div class="code-header"><span class="code-title">Короткий</span><button class="copy-btn" onclick="copyText(this)">Копировать</button></div>
+          <pre>Привет! 👋
+Спасибо за заказ. Сейчас всё подготовлю и выдам.</pre></div>
+      </div>
+      <div class="card">
+        <div class="code-block"><div class="code-header"><span class="code-title">С временем</span><button class="copy-btn" onclick="copyText(this)">Копировать</button></div>
+          <pre>Привет! Спасибо за покупку.
+Выдам в течение 5–15 минут. Если нужно что-то уточнить — пиши.</pre></div>
+      </div>
+    </section>
+
+    <section id="delivery">
+      <div class="section-header"><div class="section-number">2</div><h2 class="section-title">После выдачи товара</h2></div>
+      <div class="card">
+        <div class="code-block"><div class="code-header"><span class="code-title">Стандарт</span><button class="copy-btn" onclick="copyText(this)">Копировать</button></div>
+          <pre>Готово! ✅
+Товар выдан. Проверь, пожалуйста.
+Если всё ок — буду рад отзыву.</pre></div>
+      </div>
+      <div class="card">
+        <div class="code-block"><div class="code-header"><span class="code-title">С ссылкой на гайд</span><button class="copy-btn" onclick="copyText(this)">Копировать</button></div>
+          <pre>Готово! ✅
+
+Твой гайд / товар:
+[ССЫЛКА]
+
+Если возникнут вопросы — пиши сюда.</pre></div>
+      </div>
+    </section>
+
+    <section id="review">
+      <div class="section-header"><div class="section-number">3</div><h2 class="section-title">Просьба об отзыве</h2></div>
+      <div class="card">
+        <div class="code-block"><div class="code-header"><span class="code-title">Мягкая</span><button class="copy-btn" onclick="copyText(this)">Копировать</button></div>
+          <pre>Спасибо за покупку! 🙏
+Если всё понравилось — буду очень благодарен за отзыв.
+Это сильно помогает.</pre></div>
+      </div>
+      <div class="card">
+        <div class="code-block"><div class="code-header"><span class="code-title">С ссылкой на профиль</span><button class="copy-btn" onclick="copyText(this)">Копировать</button></div>
+          <pre>Спасибо за заказ!
+Если остался доволен — оставь, пожалуйста, отзыв:
+https://funpay.com/users/21725906/
+
+Это очень помогает развиваться 🙏</pre></div>
+      </div>
+      <div class="card">
+        <div class="code-block"><div class="code-header"><span class="code-title">После подтверждения</span><button class="copy-btn" onclick="copyText(this)">Копировать</button></div>
+          <pre>Рад, что всё прошло хорошо!
+Буду благодарен за отзыв, если не затруднит.</pre></div>
+      </div>
+    </section>
+
+    <section id="delay">
+      <div class="section-header"><div class="section-number">4</div><h2 class="section-title">Задержка</h2></div>
+      <div class="card">
+        <div class="code-block"><div class="code-header"><span class="code-title">Честно</span><button class="copy-btn" onclick="copyText(this)">Копировать</button></div>
+          <pre>Привет! Небольшая задержка, уже разбираюсь.
+Выдам максимум через 10–15 минут. Извини за ожидание.</pre></div>
+      </div>
+    </section>
+
+    <section id="refund">
+      <div class="section-header"><div class="section-number">5</div><h2 class="section-title">Возврат / отмена</h2></div>
+      <div class="card">
+        <div class="code-block"><div class="code-header"><span class="code-title">Спокойный</span><button class="copy-btn" onclick="copyText(this)">Копировать</button></div>
+          <pre>Понял, без проблем.
+Оформляю возврат. Деньги вернутся на баланс FunPay.</pre></div>
+      </div>
+    </section>
+
+    <section id="negative">
+      <div class="section-header"><div class="section-number">6</div><h2 class="section-title">Негатив / претензия</h2></div>
+      <div class="card">
+        <div class="code-block"><div class="code-header"><span class="code-title">Сглаживание</span><button class="copy-btn" onclick="copyText(this)">Копировать</button></div>
+          <pre>Понял тебя. Давай разберёмся спокойно.
+Напиши, пожалуйста, что именно не так — постараюсь быстро исправить или вернуть средства.</pre></div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Шаблоны сообщений продавца · 2026</p>
+      <p style="margin-top:8px">Продавец: <a href="https://funpay.com/users/21725906/" target="_blank">funpay.com/users/21725906</a></p>
+      <p style="margin-top:10px"><a href="index.html">← Все гайды</a></p>
+    </footer>
+  </div>
+  <div class="toast" id="toast">Скопировано!</div>
+  <script>function copyText(btn){const pre=btn.closest('.code-block').querySelector('pre');navigator.clipboard.writeText(pre.innerText).then(()=>{btn.classList.add('copied');btn.textContent='Скопировано';const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>{btn.classList.remove('copied');btn.textContent='Копировать';t.classList.remove('show')},1800)})}</script>
+</body>
+</html>
