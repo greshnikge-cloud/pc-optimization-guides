@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Оптимизация War Thunder 2026 | +FPS</title>
+  <meta name="description" content="Гайд по оптимизации War Thunder: больше FPS на слабых и средних ПК.">
+  <meta name="theme-color" content="#0b0f19">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#070b14;--bg-card:#0f1624;--bg-card-hover:#151e30;--border:#1c2740;--text:#eef2ff;--text-muted:#8b9bb8;--accent:#818cf8;--accent-2:#22d3ee;--accent-3:#c084fc;--success:#34d399;--gradient:linear-gradient(135deg,#818cf8 0%,#22d3ee 50%,#c084fc 100%);--radius:18px;--shadow:0 12px 40px rgba(0,0,0,.45)}
+    *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+    body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;min-height:100vh;overflow-x:hidden}
+    .bg-glow{position:fixed;inset:0;pointer-events:none;z-index:0}.bg-glow::before{content:'';position:absolute;top:-25%;left:-15%;width:55%;height:55%;background:radial-gradient(circle,rgba(129,140,248,.18) 0%,transparent 70%);animation:float 22s ease-in-out infinite}.bg-glow::after{content:'';position:absolute;bottom:-25%;right:-15%;width:50%;height:50%;background:radial-gradient(circle,rgba(34,211,238,.14) 0%,transparent 70%);animation:float 28s ease-in-out infinite reverse}@keyframes float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-35px) scale(1.05)}}
+    .container{max-width:960px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
+    header{padding:56px 0 32px;text-align:center}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(129,140,248,.12);border:1px solid rgba(129,140,248,.28);color:var(--accent-2);font-size:13px;font-weight:600;padding:7px 16px;border-radius:100px;margin-bottom:20px}
+    h1{font-size:clamp(28px,5vw,42px);font-weight:800;line-height:1.15;margin-bottom:14px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .subtitle{font-size:16.5px;color:var(--text-muted);max-width:540px;margin:0 auto 26px}
+    nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:8px}nav a{color:var(--text-muted);text-decoration:none;font-size:13.5px;font-weight:500;padding:8px 15px;border-radius:100px;border:1px solid var(--border);background:var(--bg-card);transition:all .2s}nav a:hover{color:var(--text);border-color:var(--accent);background:var(--bg-card-hover)}
+    section{margin-bottom:52px}.section-header{display:flex;align-items:center;gap:14px;margin-bottom:20px}.section-number{width:36px;height:36px;border-radius:11px;background:var(--gradient);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#0b0f19;flex-shrink:0}.section-title{font-size:20px;font-weight:700}
+    .card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;margin-bottom:12px;transition:all .25s}.card:hover{background:var(--bg-card-hover);border-color:rgba(129,140,248,.4);transform:translateY(-2px);box-shadow:var(--shadow)}
+    .list{list-style:none;display:grid;gap:10px}.list li{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:16px 18px;display:flex;gap:14px;align-items:flex-start}.list li:hover{border-color:rgba(129,140,248,.4);background:var(--bg-card-hover)}
+    .num{width:28px;height:28px;border-radius:8px;background:rgba(129,140,248,.18);color:var(--accent-2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+    .list strong{display:block;margin-bottom:3px;font-size:15px}.list p{color:var(--text-muted);font-size:13.5px}
+    footer{text-align:center;padding:36px 0 48px;color:var(--text-muted);font-size:13px;border-top:1px solid var(--border)}footer a{color:var(--accent-2);text-decoration:none}
+  </style>
+</head>
+<body>
+  <div class="bg-glow"></div>
+  <div class="container">
+    <header>
+      <div class="badge">✈️ War Thunder · Автовыдача 2026</div>
+      <h1>Оптимизация War Thunder<br>+FPS на слабых ПК</h1>
+      <p class="subtitle">Простые настройки, которые дают заметный прирост FPS и стабильности</p>
+      <nav>
+        <a href="#game">Настройки игры</a>
+        <a href="#windows">Windows + GPU</a>
+      </nav>
+    </header>
+
+    <section id="game">
+      <div class="section-header"><div class="section-number">1</div><h2 class="section-title">Настройки графики</h2></div>
+      <ul class="list">
+        <li><div class="num">1</div><div><strong>Графический пресет</strong><p>Low / Medium. Terrain Quality и Water Quality снижай в первую очередь.</p></div></li>
+        <li><div class="num">2</div><div><strong>Anti-Aliasing</strong><p>Off или FXAA. SSAO / SSR = Off.</p></div></li>
+        <li><div class="num">3</div><div><strong>Shadows / Anisotropic</strong><p>Low / Off. Anisotropic Filtering = 2x–4x.</p></div></li>
+        <li><div class="num">4</div><div><strong>VSync</strong><p>Off. Fullscreen.</p></div></li>
+      </ul>
+    </section>
+
+    <section id="windows">
+      <div class="section-header"><div class="section-number">2</div><h2 class="section-title">Windows + видеокарта</h2></div>
+      <ul class="list">
+        <li><div class="num">1</div><div><strong>Схема электропитания</strong><p>Высокая производительность.</p></div></li>
+        <li><div class="num">2</div><div><strong>NVIDIA / AMD</strong><p>Максимальная производительность, VSync = Выкл, Pre-rendered frames = 1.</p></div></li>
+        <li><div class="num">3</div><div><strong>Фон</strong><p>Закрой браузер и ненужные программы.</p></div></li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>Оптимизация War Thunder · 2026</p>
+      <p style="margin-top:8px">Продавец: <a href="https://funpay.com/users/21725906/" target="_blank">funpay.com/users/21725906</a></p>
+      <p style="margin-top:10px"><a href="index.html">← Все гайды</a></p>
+    </footer>
+  </div>
+</body>
+</html>
